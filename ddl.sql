@@ -1,46 +1,26 @@
-INSERT INTO customer(
-    customer_id,
-    name
-    movie_ticket
-) 
-
-VALUES(
-    '1',
-    'Keith',
-    'LEAVE THE WORLD BEHIND'
+CREATE TABLE customers(
+    customer_id SERIAL PRIMARY KEY,
+    customer_name VARCHAR (50),
+    movie_ticket VARCHAR,
+    FOREIGN KEY (cusomter_id) REFERENCES customers(cusomter_id)
 )
 
-INSERT INTO tickets(
-    movie_ticket,
-    showtime,
-    movie_theater
-) 
-
-VALUES(
-    'LEAVE THE WORLD BEHIND'
-    1030
-    20
+CREATE TABLE tickets(
+    ticket_id VARCHAR PRIMARY KEY, 
+    customer_id VARCHAR,
+    movie_theater INTEGER NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 )
 
-INSERT INTO movies(
-    sale_id,
-    showtime,
-    rating
-) 
-
-VALUES(
-    99,
-    10:30,
-    'PG'
+CREATE TABLE concessions(
+    cusomter_id VARCHAR PRIMARY KEY, 
+    price SERIAL,
 )
 
-INSERT INTO concession(
-    product_id,
-    price,
-    
-) 
 
-VALUES(
-    'raisinets',
-    5.99,
+CREATE TABLE movies (
+    movie_id SERIAL PRIMARY KEY,
+    cusomter_id TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    rating VARCHAR
+    FOREIGN KEY (cusomter_id) REFERENCES customers(cusomter_id)
 )
